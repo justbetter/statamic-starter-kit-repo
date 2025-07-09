@@ -1,0 +1,26 @@
+updatable: true
+export_paths:
+  - .env.example
+  - .gitignore
+  - content
+  - config/filesystems.php
+  - config/auth.php
+  - config/statamic/users.php
+  - config/statamic/assets.php
+  - config/statamic/eloquent-driver.php
+  - config/statamic/system.php
+  - resources/blueprints
+  - resources/fieldsets
+  - resources/css/site.css
+  - resources/views/page.blade.php
+  - resources/views/layouts/app.blade.php
+  - resources/views/components
+  - resources/sites.yaml
+  - database/migrations
+  - public/build
+  - package.json
+  - vite.config.js
+dependencies:
+  - statamic/eloquent-driver
+  - justbetter/statamic-glide-directive
+  - rapidez/blade-directives
