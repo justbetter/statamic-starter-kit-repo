@@ -2,8 +2,9 @@
     <div class="container component form">
         <div class="flex flex-col gap-y-4">
             @if ($title ?? false)
-                <x-fieldset.title :$title />
+                <x-fieldset.title :title="$title?->value()" />
             @endif
+
             <x-form
                 :form="$form?->value()"
                 :formHandle="$form->handle"
