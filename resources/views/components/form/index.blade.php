@@ -1,7 +1,6 @@
 @props([
     'form' => null,
     'formHandle' => null,
-    'title' => '',
     'buttonText' => __('Send'),
     'submissionText' => '',
     'formRedirectUrl' => null,
