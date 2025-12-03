@@ -16,7 +16,7 @@
                     {{ $option['value'] }}
                 @endforeach
             >
-                <source src="{{ $media['media']->url() }}" type="video/mp4">
+                <source src="{{ $media['media'] }}" type="video/mp4">
             </video>
         @else
             @responsive($media['media'])
