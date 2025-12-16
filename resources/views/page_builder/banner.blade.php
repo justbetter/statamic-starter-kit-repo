@@ -1,7 +1,5 @@
-<div class="h-full max-h-100 component banner">
+<div class="component banner">
     <x-fieldset.link :link="$link?->value()">
-        <x-fieldset.media
-            :media="$media?->value()"
-        />
+        <x-fieldset.media :media="$media?->value()" class="h-100" />
     </x-fieldset.link>
 </div>

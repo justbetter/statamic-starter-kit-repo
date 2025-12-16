@@ -35,5 +35,11 @@
     "Leave empty to only show text after submitting the form.": "Laat leeg om alleen een tekst te tonen na het inzenden van het formulier.",
     "Show sidebar content": "Toon sidebar content",
     "Image": "Afbeelding",
-    "Text": "Tekst"
+    "Text": "Tekst",
+    "Download attribute": "Download attribuut",
+    "Button options": "Knop opties",
+    "Icon position": "Icoon positie",
+    "Left": "Links",
+    "Right": "Rechts",
+    "Icons": "Iconen"
 }

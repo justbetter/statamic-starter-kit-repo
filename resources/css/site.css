@@ -83,3 +83,7 @@
     --shadow-header: 0 2px 80px 0 rgba(0, 0, 0, 0.08);
     --shadow-input: 0 2px 2px 0 rgba(0, 0, 0, 0.05);
 }
+
+@utility container {
+    @apply px-4 mx-auto;
+}
