@@ -2,10 +2,16 @@
 
 namespace JustBetter\StatamicStarterKit\Http\Controllers\CP;
 
+use Statamic\Contracts\Forms\Form;
+use Statamic\Fields\Blueprint;
 use Statamic\Http\Controllers\CP\Forms\FormsController as BaseFormsController;
 
 class StarterKitFormsController extends BaseFormsController
 {
+    /**
+     * @param  Form  $form
+     * @return Blueprint
+     */
     protected function editFormBlueprint($form)
     {
         $blueprint = parent::editFormBlueprint($form);
@@ -23,6 +29,7 @@ class StarterKitFormsController extends BaseFormsController
             ],
         ];
 
+        /** @var array<string, mixed> $emailFields */
         $blueprintContents['tabs']['email']['fields'] = collect($emailFields);
         $blueprint->setContents($blueprintContents);
 
