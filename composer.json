@@ -10,7 +10,7 @@
         "laravel"
     ],
     "require": {
-        "php": "^8.4",
+        "php": "^8.3",
         "justbetter/statamic-cloudflare-purge": "dev-master",
         "justbetter/statamic-glide-directive": "^2.6",
         "justbetter/statamic-starter-kit": "@dev",
