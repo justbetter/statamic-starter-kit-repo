@@ -21,7 +21,7 @@ class Faq extends Tags
             return $items;
         }
 
-        if (! $categories) {
+        if (! $categories || $categories->isEmpty()) {
             return collect();
         }
 

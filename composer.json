@@ -10,7 +10,7 @@
         "laravel"
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.4",
         "justbetter/statamic-cloudflare-purge": "dev-master",
         "justbetter/statamic-glide-directive": "^2.6",
         "justbetter/statamic-starter-kit": "@dev",
@@ -33,6 +33,7 @@
         "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
+        "pestphp/pest": "^3.8",
         "phpstan/phpstan-mockery": "^2.0",
         "phpunit/phpunit": "^11.5.3",
         "spatie/laravel-ignition": "^2.9.1"
@@ -87,7 +88,8 @@
         "quality": [
             "@style",
             "@analyse",
-            "@test"
+            "@test",
+            "@coverage"
         ]
     },
     "extra": {
