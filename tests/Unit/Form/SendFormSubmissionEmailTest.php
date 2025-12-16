@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Form;
 
-use JustBetter\StatamicStarterKit\Jobs\SendFormSubmissionEmailJob;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
+use JustBetter\StatamicStarterKit\Jobs\SendFormSubmissionEmailJob;
 use PHPUnit\Framework\Attributes\Test;
 use Statamic\Facades\Form;
 use Statamic\Sites\Site;
@@ -37,7 +37,7 @@ class SendFormSubmissionEmailTest extends TestCase
         $submission = $form->makeSubmission();
         $submission->save();
 
-        $site = new Site('::test::', ['locale' => 'null'], true);
+        $site = new Site('::test::', ['locale' => 'null']);
 
         SendFormSubmissionEmailJob::dispatch($submission, $site, $form->email());
 
