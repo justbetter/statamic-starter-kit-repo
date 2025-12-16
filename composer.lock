@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dffc052527d7d238936e39cccbb4c188",
+    "content-hash": "d9e533e238118377567b899e90356e98",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -1772,6 +1772,47 @@
                 "source": "https://github.com/justbetter/statamic-glide-directive/tree/2.6.5"
             },
             "time": "2025-04-15T07:29:06+00:00"
+        },
+        {
+            "name": "justbetter/statamic-starter-kit",
+            "version": "dev-feature/page-builder",
+            "dist": {
+                "type": "path",
+                "url": "package",
+                "reference": "698fd3bf23bdbc2f8d8ba4453ca2e555e5425712"
+            },
+            "type": "library",
+            "extra": {
+                "statamic": {
+                    "name": "JustBetter Starter Kit",
+                    "description": "A Statamic starter kit for new projects that use Statamic"
+                },
+                "laravel": {
+                    "providers": [
+                        "JustBetter\\StatamicStarterKit\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JustBetter\\StatamicStarterKit\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Kevin Meijer",
+                    "email": "kevin@justbetter.nl",
+                    "role": "Developer"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "justbetter/statamic-structured-data",
@@ -11266,7 +11307,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "justbetter/statamic-cloudflare-purge": 20
+        "justbetter/statamic-cloudflare-purge": 20,
+        "justbetter/statamic-starter-kit": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -11274,5 +11316,5 @@
         "php": "^8.2"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

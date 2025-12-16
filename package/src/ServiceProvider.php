@@ -5,6 +5,8 @@ namespace JustBetter\StatamicStarterKit;
 use Illuminate\Routing\Router;
 use Statamic\Providers\AddonServiceProvider;
 use Statamic\Http\Middleware\RedirectAbsoluteDomains;
+use JustBetter\StatamicStarterKit\Http\Controllers\CP\StarterKitFormsController;
+use Statamic\Http\Controllers\CP\Forms\FormsController;
 
 class ServiceProvider extends AddonServiceProvider
 {
@@ -14,5 +16,7 @@ class ServiceProvider extends AddonServiceProvider
             $router = app(Router::class);
             $router->pushMiddlewareToGroup('web', RedirectAbsoluteDomains::class);
         });
+
+        $this->app->singleton(FormsController::class, StarterKitFormsController::class);
     }
 }
