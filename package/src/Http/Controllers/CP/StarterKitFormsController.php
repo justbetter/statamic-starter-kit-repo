@@ -15,9 +15,9 @@ class StarterKitFormsController extends BaseFormsController
     protected function editFormBlueprint($form)
     {
         $blueprint = parent::editFormBlueprint($form);
-
         $blueprintContents = $blueprint->contents();
 
+        /** @var array<string, array{handle: string, field: array<string, array<string, mixed>>}> $emailFields */
         $emailFields = $blueprintContents['tabs']['email']['fields']?->toArray() ?? [];
 
         $emailFields['email']['field']['fields'][] = [
@@ -29,7 +29,6 @@ class StarterKitFormsController extends BaseFormsController
             ],
         ];
 
-        /** @var array<string, mixed> $emailFields */
         $blueprintContents['tabs']['email']['fields'] = collect($emailFields);
         $blueprint->setContents($blueprintContents);
 
