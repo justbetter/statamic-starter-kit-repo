@@ -49,41 +49,10 @@ class SendFormSubmissionEmailJob implements ShouldQueue
             $fieldData = $fields->firstWhere('handle', $field);
             /** @var string $display */
             $display = isset($fieldData['display']) && is_string($fieldData['display']) ? $fieldData['display'] : '';
+            /** @var string|array<int|string, mixed>|object $value */
             $value = $data[$field] ?? '';
             $list .= '<strong>'.$display.':</strong> ';
-            $variableValues = '';
-
-            if (is_array($value)) {
-                /** @var array<int|string, mixed> $value */
-                foreach ($value as $key => $item) {
-                    if ($key > 0) {
-                        $list .= ', ';
-                        $variableValues .= ', ';
-                    }
-                    /** @var array<string, mixed>|string $item */
-                    $label = '';
-                    if (is_array($item) && isset($item['label'])) {
-                        $labelValue = $item['label'];
-                        $label = is_string($labelValue) ? $labelValue : '';
-                    } elseif (is_string($item)) {
-                        $label = $item;
-                    }
-                    $list .= $label;
-                    $variableValues .= $label;
-                }
-            } else {
-                if (is_string($value)) {
-                    $list .= $value;
-                    $variableValues .= $value;
-                } elseif (is_object($value) && method_exists($value, 'label')) {
-                    $labelValue = $value->label();
-                    if (is_string($labelValue)) {
-                        $list .= $labelValue;
-                        $variableValues .= $labelValue;
-                    }
-                }
-            }
-
+            $variableValues = $this->formatFieldValue($value, $list);
             $list .= '<br>';
             /** @var string $field */
             $variables["{{ $field }}"] = $variableValues;
@@ -95,5 +64,61 @@ class SendFormSubmissionEmailJob implements ShouldQueue
         $emailContent = isset($this->config['email_content']) && is_string($this->config['email_content']) ? $this->config['email_content'] : '';
         $text = strtr($emailContent, $variables);
         $this->config['email_content'] = $text;
+    }
+
+    /**
+     * @param  string|array<int|string, mixed>|object  $value
+     */
+    protected function formatFieldValue(string|array|object $value, string &$list): string
+    {
+        if (is_array($value)) {
+            return $this->formatArrayValue($value, $list);
+        }
+
+        $label = $this->extractLabelFromItem($value);
+        $list .= $label;
+
+        return $label;
+    }
+
+    /**
+     * @param  array<int|string, mixed>  $value
+     */
+    protected function formatArrayValue(array $value, string &$list): string
+    {
+        $variableValues = '';
+        foreach ($value as $key => $item) {
+            if ($key > 0) {
+                $list .= ', ';
+                $variableValues .= ', ';
+            }
+
+            $label = $this->extractLabelFromItem($item);
+            $list .= $label;
+            $variableValues .= $label;
+        }
+
+        return $variableValues;
+    }
+
+    protected function extractLabelFromItem(mixed $item): string
+    {
+        if (is_array($item) && isset($item['label'])) {
+            $labelValue = $item['label'];
+
+            return is_string($labelValue) ? $labelValue : '';
+        }
+
+        if (is_string($item)) {
+            return $item;
+        }
+
+        if (is_object($item) && method_exists($item, 'label')) {
+            $labelValue = $item->label();
+
+            return is_string($labelValue) ? $labelValue : '';
+        }
+
+        return '';
     }
 }
