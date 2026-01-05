@@ -19,7 +19,7 @@
         @include('statamic-glide-directive::partials.head')
         @includeIf('layouts.structured-data.head')
     </head>
-    <body class="flex flex-col antialiased font-sans">
+    <body class="flex flex-col antialiased font-sans text">
         <x-layouts.header :logo="$brand->logo ?? null" />
         @yield('content')
         <x-layouts.footer :logo="$brand->logo ?? null" />
