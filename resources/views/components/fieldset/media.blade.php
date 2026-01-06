@@ -1,4 +1,4 @@
-@props(['media' => false, 'loading' => 'lazy'])
+@props(['media' => false])
 
 @if($media && $media['media'])
     @php
@@ -19,7 +19,7 @@
                 <source src="{{ $media['media'] }}" type="video/mp4">
             </video>
         @else
-            @responsive($media['media'], ['loading' => $loading])
+            @responsive($media['media'])
         @endif
     </div>
 @endif

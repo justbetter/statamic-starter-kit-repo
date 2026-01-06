@@ -3,10 +3,7 @@
         <div class="grid grid-cols-4 gap-4">
             @foreach ($logos as $logo)
                 @if ($logo->logo ?? false)
-                    @responsive($logo->logo, [
-                        'class' => 'w-full h-auto',
-                        'loading' => ($is_first ?? false) && $loop->first ? 'eager' : 'lazy'
-                    ])
+                    @responsive($logo->logo, ['class' => 'w-full h-auto'])
                 @endif
             @endforeach
         </div>
