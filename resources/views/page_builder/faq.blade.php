@@ -1,19 +1,21 @@
 @php
     $faqItems = \Statamic\Statamic::tag('faq:getItems')->params(['type' => $faq_type?->value()?->value(), 'items' => $faq_items?->get(), 'categories' => $faq_categories?->get()])->fetch();
 @endphp
+
 @if($faqItems?->isNotEmpty() ?? false)
     <div class="component faq">
         <div class="container">
-            <div class="flex justify-between items-center">
-                <x-fieldset.title :title="$title?->value()" />
-
-                <x-fieldset.buttons :buttons="$buttons?->value()" />
-            </div>
+            <x-fieldset.title :title="$title?->value()" class="mb-5" />
+            
             @foreach($faqItems as $faq)
-                <div>
-                    <x-title.default>{{ $faq->title }}</x-title.default>
-                    <x-fieldset.content :content="$faq->answer_content" />
-                </div>
+                <x-rapidez::accordion class="border-b" name="single" open>
+                    <x-slot:label class="text-lg">
+                        {{ $faq->title }}
+                    </x-slot:label>
+                    <x-slot:content>
+                        <x-fieldset.content :content="$faq->answer_content" />
+                    </x-slot:content>
+                </x-rapidez::accordion>
             @endforeach
         </div>
     </div>

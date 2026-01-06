@@ -1,6 +1,6 @@
 @props(['link' => false, 'disable' => false])
 
-@if($link && $link['link']?->url())
+@if($link)
     <x-rapidez::tag
         :is="!$disable && $link['link']->url() ? 'a' : 'div'"
         :href="!$disable && $link['link']->url() ? $link['link']->url() : null"

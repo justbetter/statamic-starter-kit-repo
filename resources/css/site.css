@@ -11,7 +11,7 @@
 @custom-variant hover (&:hover);
 
 @theme {
-    --font-sans: "", sans-serif;
+    --font-sans: system-ui, sans-serif;
 
     --primary: #4951D5;
     --primary-text: var(--color-white);
@@ -86,4 +86,32 @@
 
 @utility container {
     @apply px-4 mx-auto;
+}
+
+@utility text {
+    color: var(--text-color-default);
+}
+
+@utility bg {
+    background-color: var(--background-color-default);
+}
+
+@utility border {
+    border-color: var(--border-color-default);
+}
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--border);
+    }
+
+    @supports (interpolate-size: allow-keywords) {
+        :root {
+            interpolate-size: allow-keywords;
+        }
+    }
 }
