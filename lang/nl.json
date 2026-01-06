@@ -41,5 +41,9 @@
     "Icon position": "Icoon positie",
     "Left": "Links",
     "Right": "Rechts",
-    "Icons": "Iconen"
+    "Icons": "Iconen",
+    "Loading": "Laadmethode",
+    "Lazy loading": "Lazy laden",
+    "Eager loading": "Eager laden",
+    "Lazy loading is the default and will load the image when it is visible in the viewport. Eager loading will load the image when the page loads.": "Lazy laden is de standaard en zal de afbeelding laden wanneer deze zichtbaar is in de viewport. Eager laden zal de afbeelding laden wanneer de pagina wordt geladen."
 }

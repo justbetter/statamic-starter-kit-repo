@@ -15,11 +15,12 @@
                 @foreach($media->media_options['video'] as $option)
                     {{ $option['value'] }}
                 @endforeach
+                loading="{{ $media->media_options['loading']?->value() ?? 'lazy' }}"
             >
                 <source src="{{ $media['media'] }}" type="video/mp4">
             </video>
         @else
-            @responsive($media['media'])
+            @responsive($media['media'], ['loading' => $media->media_options['loading']?->value() ?? 'lazy'])
         @endif
     </div>
 @endif
