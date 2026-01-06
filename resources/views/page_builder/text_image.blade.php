@@ -27,6 +27,7 @@
                     <div>
                         <x-fieldset.media
                             :media="$media?->value()"
+                            :loading="($is_first ?? false) ? 'eager' : 'lazy'"
                         />
                     </div>
                 @endif
