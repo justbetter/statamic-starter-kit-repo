@@ -19,7 +19,7 @@ export_paths:
   - resources/js
   - resources/views/page.blade.php
   - resources/views/page_builder.blade.php
-  - resources/views/layouts/app.blade.php
+  - resources/views/layouts
   - resources/views/components
   - resources/views/mail
   - resources/views/page_builder
