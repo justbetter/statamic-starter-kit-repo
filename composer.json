@@ -16,6 +16,7 @@
         "justbetter/statamic-starter-kit": "@dev",
         "justbetter/statamic-structured-data": "^1.5",
         "laravel/framework": "^12.0",
+        "laravel/horizon": "^5.43",
         "laravel/tinker": "^2.10.1",
         "rapidez/blade-components": "^1.11",
         "rapidez/blade-directives": "^1.1",
