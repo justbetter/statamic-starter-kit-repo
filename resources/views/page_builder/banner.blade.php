@@ -1,7 +1,16 @@
-<div class="h-full max-h-100 component banner">
-    <x-fieldset.link :link="$link?->value()">
-        <x-fieldset.media
-            :media="$media?->value()"
-        />
-    </x-fieldset.link>
+<div class="component banner">
+    <div @class([
+        'container' => $display['value'] === 'container',
+        'xl:container' => $display['value'] === 'desktop_container',
+        'w-full' => $display['value'] === 'full_width'
+    ])>
+        <x-fieldset.link :link="$link?->value()">
+            <x-fieldset.media :media="$media?->value()"
+                @class([
+                    'h-80' => $size['value'] === 'compact',
+                    'h-160' => $size['value'] === 'normal'
+                ])
+            />
+        </x-fieldset.link>
+    </div>
 </div>

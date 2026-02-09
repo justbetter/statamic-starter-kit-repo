@@ -35,5 +35,19 @@
     "Leave empty to only show text after submitting the form.": "Laat leeg om alleen een tekst te tonen na het inzenden van het formulier.",
     "Show sidebar content": "Toon sidebar content",
     "Image": "Afbeelding",
-    "Text": "Tekst"
+    "Text": "Tekst",
+    "Download attribute": "Download attribuut",
+    "Button options": "Knop opties",
+    "Icon position": "Icoon positie",
+    "Left": "Links",
+    "Right": "Rechts",
+    "Icons": "Iconen",
+    "Loading": "Laadmethode",
+    "Lazy loading": "Lazy laden",
+    "Eager loading": "Eager laden",
+    "Lazy loading is the default and will load the image when it is visible in the viewport. Eager loading will load the image when the page loads.": "Lazy laden is de standaard en zal de afbeelding laden wanneer deze zichtbaar is in de viewport. Eager laden zal de afbeelding laden wanneer de pagina wordt geladen.",
+    "Text + image": "Tekst + afbeelding",
+    "FAQ": "Veelgestelde vragen",
+    "Global component": "Globaal component",
+    "Normal": "Normaal"
 }
