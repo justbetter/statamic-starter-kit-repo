@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f08677290cd533893565209ee06eccca",
+    "content-hash": "d4193b8efd72c851cac3f96a0c8de19f",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -1765,74 +1765,6 @@
                 "source": "https://github.com/justbetter/statamic-glide-directive/tree/3.0.2"
             },
             "time": "2025-10-21T08:29:17+00:00"
-        },
-        {
-            "name": "justbetter/statamic-image-optimize",
-            "version": "4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/justbetter/statamic-image-optimize.git",
-                "reference": "c0931ba12683c35aca7e9ac779d635c8b3482475"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/justbetter/statamic-image-optimize/zipball/c0931ba12683c35aca7e9ac779d635c8b3482475",
-                "reference": "c0931ba12683c35aca7e9ac779d635c8b3482475",
-                "shasum": ""
-            },
-            "require": {
-                "ext-fileinfo": "*",
-                "laravel/framework": "^11.0 || ^12.0",
-                "league/glide": "^2.3",
-                "php": "^8.2|^8.3",
-                "statamic/cms": "^5.0"
-            },
-            "require-dev": {
-                "larastan/larastan": "^2.5",
-                "laravel/pint": "^1.7",
-                "orchestra/testbench": "^8.0|^9.0|^10.0",
-                "pestphp/pest": "^2.0",
-                "phpstan/phpstan-mockery": "^1.1",
-                "phpunit/phpunit": "^10.1 || ^11.5"
-            },
-            "type": "package",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "JustBetter\\ImageOptimize\\ServiceProvider"
-                    ]
-                },
-                "statamic": {
-                    "name": "Image Optimize",
-                    "description": "Image optimization after upload"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JustBetter\\ImageOptimize\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kevin Meijer",
-                    "email": "kevin@justbetter.nl",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Image optimization after upload",
-            "keywords": [
-                "asset-uploads",
-                "justbetter"
-            ],
-            "support": {
-                "issues": "https://github.com/justbetter/statamic-image-optimize/issues",
-                "source": "https://github.com/justbetter/statamic-image-optimize/tree/4.0.0"
-            },
-            "time": "2025-05-20T13:33:01+00:00"
         },
         {
             "name": "justbetter/statamic-starter-kit",
@@ -12720,5 +12652,5 @@
         "php": "^8.3"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
