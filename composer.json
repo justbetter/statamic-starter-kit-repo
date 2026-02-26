@@ -13,6 +13,7 @@
         "php": "^8.3",
         "justbetter/statamic-cloudflare-purge": "^1.0",
         "justbetter/statamic-glide-directive": "^3.0",
+        "justbetter/statamic-image-optimize": "^4.0",
         "justbetter/statamic-starter-kit": "@dev",
         "justbetter/statamic-structured-data": "^1.5",
         "laravel/framework": "^12.0",
