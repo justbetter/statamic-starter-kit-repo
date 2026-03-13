@@ -20,3 +20,5 @@ fields:
       instructions: 'Add a background color'
       width: 50
       localizable: false
+  -
+    import: title
