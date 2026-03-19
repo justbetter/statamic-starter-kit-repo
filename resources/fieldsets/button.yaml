@@ -50,14 +50,7 @@ fields:
               options: 'equals true'
             fields:
               -
-                handle: icon
-                field:
-                  max_files: 1
-                  container: icons
-                  type: assets
-                  display: Icon
-                  localizable: false
-                  width: 66
+                import: icon
               -
                 handle: icon_position
                 field:
@@ -72,6 +65,6 @@ fields:
                   type: select
                   display: 'Icon position'
                   localizable: false
-                  width: 33
+                  width: 50
         -
           import: link
