@@ -36,10 +36,11 @@ fields:
         -
           handle: options
           field:
-            type: toggle
-            display: 'Knop opties'
+            type: revealer
+            display: 'Button options'
             localizable: false
             width: 33
+            mode: toggle
         -
           handle: button_options
           field:
