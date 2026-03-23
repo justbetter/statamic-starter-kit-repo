@@ -1,7 +1,7 @@
 @props(['accordion' => []])
 @slots(['label', 'content'])
 
-@if(count($accordion['accordion']) > 0)
+@if(!empty($accordion['accordion']))
     @foreach($accordion['accordion'] as $accordion)
         <x-rapidez::accordion :attributes="$attributes->twMerge('border-b')">
             <x-slot:label :attributes="$label->attributes->twMerge()">
