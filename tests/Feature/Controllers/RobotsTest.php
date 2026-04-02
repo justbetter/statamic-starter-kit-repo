@@ -62,6 +62,35 @@ class RobotsTest extends TestCase
     }
 
     #[Test]
+    public function it_returns_robots_fallback_when_the_global_is_empty_and_config_is_empty(): void
+    {
+        config()->set('seo.robots.default', '');
+
+        /** @var \Statamic\Sites\Site $defaultSite */
+        $defaultSite = Site::default();
+
+        /** @var GlobalSet $set */
+        $set = GlobalSetFacade::findByHandle('robots');
+
+        $variables = $set->in($defaultSite->handle()) ?? $set->makeLocalization($defaultSite->handle());
+
+        $variables->data([
+            'robots' => '   ',
+        ])->save();
+
+        Blink::flush();
+
+        $siteUrl = rtrim($defaultSite->absoluteUrl(), '/');
+
+        $this->get('/robots.txt')
+            ->assertOk()
+            ->assertHeader('content-type', 'text/plain; charset=UTF-8')
+            ->assertSeeText('User-agent: *', false)
+            ->assertSeeText('Disallow:', false)
+            ->assertSeeText("Sitemap: $siteUrl/sitemap.xml", false);
+    }
+
+    #[Test]
     public function it_uses_the_current_sites_sitemap_url_in_the_fallback(): void
     {
         config()->set('statamic.system.multisite', true);
