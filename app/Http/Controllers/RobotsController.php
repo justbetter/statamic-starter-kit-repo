@@ -32,6 +32,16 @@ class RobotsController extends Controller
         $siteUrl = rtrim($currentSite->absoluteUrl() ?? config('app.url'), '/');
         $sitemapPath = ltrim(config()->string('statamic.seo-pro.sitemap.url', 'sitemap.xml'), '/');
 
+        /** @var string $default */
+        $default = config('seo.robots.default');
+
+        if (filled($default)) {
+            return strtr($default, [
+                '{site_url}' => $siteUrl,
+                '{sitemap_path}' => $sitemapPath,
+            ]);
+        }
+
         return implode("\n", [
             'User-agent: *',
             'Disallow: /*?',
