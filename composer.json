@@ -10,20 +10,20 @@
         "laravel"
     ],
     "require": {
-        "php": "^8.3",
-        "justbetter/statamic-cloudflare-purge": "^1.0",
-        "justbetter/statamic-glide-directive": "^3.0",
-        "justbetter/statamic-image-optimize": "^4.0",
+        "php": "^8.4",
+        "justbetter/statamic-cloudflare-purge": "^2.0",
+        "justbetter/statamic-glide-directive": "^4.0",
+        "justbetter/statamic-image-optimize": "^5.0",
         "justbetter/statamic-starter-kit": "@dev",
-        "justbetter/statamic-structured-data": "^1.5",
+        "justbetter/statamic-structured-data": "^2.0",
         "laravel/framework": "^12.0",
         "laravel/horizon": "^5.43",
         "laravel/tinker": "^2.10.1",
         "rapidez/blade-components": "^1.11",
         "rapidez/blade-directives": "^1.1",
-        "statamic/cms": "^5.0",
-        "statamic/eloquent-driver": "^4.35",
-        "statamic/seo-pro": "^6.7"
+        "statamic/cms": "^6.0",
+        "statamic/eloquent-driver": "^5.0",
+        "statamic/seo-pro": "^7.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8.1",
