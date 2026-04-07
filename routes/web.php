@@ -1,7 +1,6 @@
 <?php
 
+use App\Http\Controllers\RobotsController;
 use Illuminate\Support\Facades\Route;
 
-// Route::statamic('example', 'example-view', [
-//    'title' => 'Example'
-// ]);
+Route::get('/robots.txt', RobotsController::class);
