@@ -2,25 +2,17 @@
 
 namespace JustBetter\StatamicStarterKit\Http\Controllers\CP;
 
-use Statamic\Contracts\Forms\Form;
 use Statamic\Fields\Blueprint;
 use Statamic\Http\Controllers\CP\Forms\FormsController as BaseFormsController;
 
 class StarterKitFormsController extends BaseFormsController
 {
-    /**
-     * @param  Form  $form
-     * @return Blueprint
-     */
-    protected function editFormBlueprint($form)
+    protected function editFormBlueprint($form): Blueprint
     {
         $blueprint = parent::editFormBlueprint($form);
         $blueprintContents = $blueprint->contents();
 
-        /** @var array<string, array{handle: string, field: array<string, array<string, mixed>>}> $emailFields */
-        $emailFields = $blueprintContents['tabs']['email']['fields']?->toArray() ?? [];
-
-        $emailFields['email']['field']['fields'][] = [
+        $emailContentField = [
             'handle' => 'email_content',
             'field' => [
                 'type' => 'textarea',
@@ -29,7 +21,45 @@ class StarterKitFormsController extends BaseFormsController
             ],
         ];
 
-        $blueprintContents['tabs']['email']['fields'] = collect($emailFields);
+        if (isset($blueprintContents['tabs']['email']['fields']['email']['field']['fields']) && is_array($blueprintContents['tabs']['email']['fields']['email']['field']['fields'])) {
+            $fields = $blueprintContents['tabs']['email']['fields']['email']['field']['fields'];
+            $exists = collect($fields)->contains(fn (array $field): bool => ($field['handle'] ?? null) === 'email_content');
+            if (! $exists) {
+                $fields[] = $emailContentField;
+                $blueprintContents['tabs']['email']['fields']['email']['field']['fields'] = $fields;
+            }
+        }
+
+        if (isset($blueprintContents['tabs']['main']['sections']) && is_array($blueprintContents['tabs']['main']['sections'])) {
+            foreach ($blueprintContents['tabs']['main']['sections'] as $sectionIndex => $section) {
+                if (($section['display'] ?? null) !== 'Email') {
+                    continue;
+                }
+
+                $sectionFields = $section['fields'] ?? [];
+                if (! is_array($sectionFields)) {
+                    continue;
+                }
+
+                foreach ($sectionFields as $fieldIndex => $fieldConfig) {
+                    if (($fieldConfig['handle'] ?? null) !== 'email') {
+                        continue;
+                    }
+
+                    $gridFields = $fieldConfig['field']['fields'] ?? [];
+                    if (! is_array($gridFields)) {
+                        continue;
+                    }
+
+                    $exists = collect($gridFields)->contains(fn (array $field): bool => ($field['handle'] ?? null) === 'email_content');
+                    if (! $exists) {
+                        $gridFields[] = $emailContentField;
+                        $blueprintContents['tabs']['main']['sections'][$sectionIndex]['fields'][$fieldIndex]['field']['fields'] = $gridFields;
+                    }
+                }
+            }
+        }
+
         $blueprint->setContents($blueprintContents);
 
         return $blueprint;
