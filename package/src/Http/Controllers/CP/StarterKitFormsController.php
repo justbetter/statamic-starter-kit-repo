@@ -7,7 +7,7 @@ use Statamic\Http\Controllers\CP\Forms\FormsController as BaseFormsController;
 
 class StarterKitFormsController extends BaseFormsController
 {
-    protected function editFormBlueprint($form): Blueprint
+    protected function editFormBlueprint(mixed $form): Blueprint
     {
         $blueprint = parent::editFormBlueprint($form);
         $blueprintContents = $blueprint->contents();
@@ -31,8 +31,10 @@ class StarterKitFormsController extends BaseFormsController
         }
 
         if (isset($blueprintContents['tabs']['main']['sections']) && is_array($blueprintContents['tabs']['main']['sections'])) {
-            foreach ($blueprintContents['tabs']['main']['sections'] as $sectionIndex => $section) {
-                if (($section['display'] ?? null) !== 'Email') {
+            $sections = $blueprintContents['tabs']['main']['sections'];
+
+            foreach ($sections as $sectionIndex => $section) {
+                if (! is_array($section) || ($section['display'] ?? null) !== 'Email') {
                     continue;
                 }
 
@@ -42,11 +44,16 @@ class StarterKitFormsController extends BaseFormsController
                 }
 
                 foreach ($sectionFields as $fieldIndex => $fieldConfig) {
-                    if (($fieldConfig['handle'] ?? null) !== 'email') {
+                    if (! is_array($fieldConfig) || ($fieldConfig['handle'] ?? null) !== 'email') {
                         continue;
                     }
 
-                    $gridFields = $fieldConfig['field']['fields'] ?? [];
+                    $fieldDefinition = $fieldConfig['field'] ?? null;
+                    if (! is_array($fieldDefinition)) {
+                        continue;
+                    }
+
+                    $gridFields = $fieldDefinition['fields'] ?? [];
                     if (! is_array($gridFields)) {
                         continue;
                     }
@@ -54,10 +61,17 @@ class StarterKitFormsController extends BaseFormsController
                     $exists = collect($gridFields)->contains(fn (array $field): bool => ($field['handle'] ?? null) === 'email_content');
                     if (! $exists) {
                         $gridFields[] = $emailContentField;
-                        $blueprintContents['tabs']['main']['sections'][$sectionIndex]['fields'][$fieldIndex]['field']['fields'] = $gridFields;
+
+                        $fieldDefinition['fields'] = $gridFields;
+                        $fieldConfig['field'] = $fieldDefinition;
+                        $sectionFields[$fieldIndex] = $fieldConfig;
+                        $section['fields'] = $sectionFields;
+                        $sections[$sectionIndex] = $section;
                     }
                 }
             }
+
+            $blueprintContents['tabs']['main']['sections'] = $sections;
         }
 
         $blueprint->setContents($blueprintContents);
