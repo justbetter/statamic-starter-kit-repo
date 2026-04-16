@@ -4,7 +4,7 @@ The fieldset has two basic content types, text and buttons. If you want to add m
 ```
     ...
     @elseif($data['type'] === 'accordion')
-        <x-fieldset.accordion />
+        <x-fieldset.accordion :accordion="$accordion->value()" />
     @endif
 ```
 
