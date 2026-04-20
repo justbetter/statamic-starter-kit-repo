@@ -4,6 +4,7 @@ namespace JustBetter\StatamicStarterKit;
 
 use Illuminate\Routing\Router;
 use JustBetter\StatamicStarterKit\Http\Controllers\CP\StarterKitFormsController;
+use Statamic\Facades\Icon;
 use Statamic\Http\Controllers\CP\Forms\FormsController;
 use Statamic\Http\Middleware\RedirectAbsoluteDomains;
 use Statamic\Providers\AddonServiceProvider;
@@ -18,5 +19,8 @@ class ServiceProvider extends AddonServiceProvider
         });
 
         $this->app->singleton(FormsController::class, StarterKitFormsController::class);
+
+        Icon::register('custom-svg', resource_path('svg'));
+        Icon::register('custom-icons', public_path('icons'));
     }
 }
