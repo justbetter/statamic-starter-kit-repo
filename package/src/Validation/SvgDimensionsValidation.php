@@ -9,8 +9,15 @@ class SvgDimensionsValidation
 {
     public static function register(): void
     {
-        Validator::extend('svg_has_dimensions', [self::class, 'passes'], __('validation.svg_has_dimensions'));
-        Validator::replacer('svg_has_dimensions', [self::class, 'message']);
+        Validator::extend(
+            'svg_has_dimensions',
+            static fn (string $attribute, mixed $value): bool => self::passes($attribute, $value),
+            __('validation.svg_has_dimensions')
+        );
+        Validator::replacer(
+            'svg_has_dimensions',
+            static fn (string $message, string $attribute): string => self::message($message, $attribute)
+        );
     }
 
     public static function passes(string $attribute, mixed $value): bool
