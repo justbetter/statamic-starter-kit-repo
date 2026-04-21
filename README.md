@@ -24,13 +24,13 @@ All fieldsets can be used in the components where you need these fieldsets. The 
 #### Accordion
 
 ```blade
-<x-fieldset.accordion :accordion="$accordion->value()" />
+<x-fieldset.accordion :accordion="$accordion?->value()" />
 ```
 
 #### Button
 
 ```blade
-<x-fieldset.button :button="$button->value()" />
+<x-fieldset.button :button="$button?->value()" />
 ```
 
 #### Buttons
@@ -54,7 +54,7 @@ All fieldsets can be used in the components where you need these fieldsets. The 
 #### Link
 
 ```blade
-<x-fieldset.link :link="$link->value()">
+<x-fieldset.link :link="$link?->value()">
     This is a link
 </x-fieldset.link>
 ```

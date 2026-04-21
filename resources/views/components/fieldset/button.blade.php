@@ -1,15 +1,14 @@
 {{--
-This is just a single button.
-If you only need one button in your component you can use this fieldset.
-Need more than one button in your component? Use the fieldset buttons instead of button.
+This is a single button.
+If you need more buttons use the (plural) fieldset.buttons.
 
 Example:
 ```
-<x-fieldset.button :button="$button->value()" />
+<x-fieldset.button :button="$button?->value()" />
 ```
 
 ```
-<x-fieldset.button :button="$button->value()" class="mt-4"/>
+<x-fieldset.button :button="$button?->value()" class="mt-4"/>
 ```
 --}}
 @props(['button' => false, 'link' => true])

@@ -1,6 +1,6 @@
 {{--
-This fieldset can be used if you need multiple buttons inside your component.
-If you only need one button in your component you can use the fieldset button.
+Multiple buttons.
+If you need one button use the (singular) fieldset.button.
 
 Example:
 ```

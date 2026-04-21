@@ -1,20 +1,24 @@
 {{--
-This is the title fieldset, it can be used for components where you need a title.
-If you want to have different variants add them like this:
-```
-$component = match($title->title_options['variant']?->value()) {
-    default => 'title.default',
-    '4xl' => 'title.4xl'
-};
-```
+Everything that has to do with titles.
 
 Examples:
 ```
 <x-fieldset.title :title="$title?->value()" />
 ```
 
+We don't recommend adding custom classes on the title fieldset,
+change this globally inside the main component.
 ```
 <x-fieldset.title :title="$title?->value()" class="text-primary"/>
+```
+
+If you want to have different variants add them like this:
+```
+$component = match($title->title_options['variant']?->value()) {
+    default => 'title.component',
+    'component-title' => 'title.component',
+    'page-title' => 'page.title'
+};
 ```
 --}}
 @props(['title' => false])

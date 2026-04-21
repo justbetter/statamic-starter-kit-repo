@@ -1,6 +1,5 @@
 {{--
-This fieldset can be used in a component to display an icon. For example it is used in the fieldset
-button to make it possible to add an icon inside any button.
+This can be used to display an icon.
 
 Examples:
 ```
