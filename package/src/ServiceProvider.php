@@ -4,6 +4,7 @@ namespace JustBetter\StatamicStarterKit;
 
 use Illuminate\Routing\Router;
 use JustBetter\StatamicStarterKit\Http\Controllers\CP\StarterKitFormsController;
+use JustBetter\StatamicStarterKit\Validation\SvgDimensionsValidation;
 use Statamic\Facades\Icon;
 use Statamic\Http\Controllers\CP\Forms\FormsController;
 use Statamic\Http\Middleware\RedirectAbsoluteDomains;
@@ -19,6 +20,7 @@ class ServiceProvider extends AddonServiceProvider
         });
 
         $this->app->singleton(FormsController::class, StarterKitFormsController::class);
+        SvgDimensionsValidation::register();
 
         Icon::register('custom-svg', resource_path('svg'));
         Icon::register('custom-icons', public_path('icons'));
