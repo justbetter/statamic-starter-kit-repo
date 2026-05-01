@@ -3,17 +3,24 @@
 namespace JustBetter\StatamicStarterKit\Fieldtypes;
 
 use Illuminate\Support\Collection;
-use Statamic\Facades\Form;
+use Statamic\Facades\Form as FormFacade;
+use Statamic\Fields\Blueprint;
 use Statamic\Fields\Fieldtype;
 
 class FormEmailAvailableFieldsFieldtype extends Fieldtype
 {
+    /** @var bool */
     protected $selectable = false;
 
+    /** @var bool */
     protected $localizable = false;
 
+    /** @var bool */
     protected $validatable = false;
 
+    /**
+     * @return array{available_fields: array<int, array{handle: string, label: string, token: string}>}
+     */
     public function preload(): array
     {
         $formHandle = $this->config('form');
@@ -24,11 +31,14 @@ class FormEmailAvailableFieldsFieldtype extends Fieldtype
         ];
     }
 
-    public function preProcess($data)
+    public function preProcess(mixed $data): mixed
     {
         return $data;
     }
 
+    /**
+     * @return array<string, array<string, string>>
+     */
     protected function configFieldItems(): array
     {
         return [
@@ -39,20 +49,22 @@ class FormEmailAvailableFieldsFieldtype extends Fieldtype
         ];
     }
 
+    /**
+     * @return Collection<int, array{handle: string, label: string, token: string}>
+     */
     private function getAvailableFormFields(string $formHandle): Collection
     {
-        $form = Form::find($formHandle);
+        $form = FormFacade::find($formHandle);
 
-        if (! $form) {
-            return collect();
-        }
+        /** @var Blueprint $blueprint */
+        $blueprint = $form->blueprint();
+        /** @var Collection<int, array{field: array{display?: string}, handle: string}> $items */
+        $items = $blueprint->fields()->items();
 
-        return $form->blueprint()
-            ?->fields()
-            ?->items()
-            ?->map(function (array $data): array {
-                $handle = (string) ($data['handle'] ?? '');
-                $label = (string) ($data['field']['display'] ?? $handle);
+        return $items
+            ->map(function (array $data): array {
+                $handle = $data['handle'];
+                $label = $data['field']['display'] ?? $handle;
 
                 return [
                     'handle' => $handle,
@@ -60,6 +72,6 @@ class FormEmailAvailableFieldsFieldtype extends Fieldtype
                     'token' => "{{ {$handle} }}",
                 ];
             })
-            ?? collect();
+            ->values();
     }
 }

@@ -5,6 +5,6 @@ includes:
 parameters:
     paths:
         - app/
-        - package/
+        - package/src/
         - tests/
     level: 9

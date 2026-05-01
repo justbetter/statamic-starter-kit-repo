@@ -11,6 +11,7 @@ use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
 {
+    /** @phpstan-ignore-next-line */
     protected $vite = [
         'input' => [
             'resources/js/justbetter-starter-kit.js',
