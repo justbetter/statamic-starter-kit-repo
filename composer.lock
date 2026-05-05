@@ -2122,11 +2122,14 @@
         },
         {
             "name": "justbetter/statamic-starter-kit",
-            "version": "dev-master",
+            "version": "dev-feature/email-variables",
             "dist": {
                 "type": "path",
                 "url": "package",
-                "reference": "b4a104aecea0d9bf391c6a9389ff4ace390c777a"
+                "reference": "cceab9b5747e9663f662c5b7d19760588561b1ae"
+            },
+            "require": {
+                "statamic/cms": "^6.0"
             },
             "type": "library",
             "extra": {

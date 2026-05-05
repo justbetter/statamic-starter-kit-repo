@@ -1,6 +1,6 @@
 <?php
 
-namespace Feature\Controllers;
+namespace Tests\Feature\Controllers;
 
 use PHPUnit\Framework\Attributes\Test;
 use Statamic\Facades\Blink;

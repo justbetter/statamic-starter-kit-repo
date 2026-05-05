@@ -11,8 +11,19 @@ use Statamic\Providers\AddonServiceProvider;
 
 class ServiceProvider extends AddonServiceProvider
 {
+    /** @phpstan-ignore-next-line */
+    protected $vite = [
+        'input' => [
+            'resources/js/justbetter-starter-kit.js',
+            'resources/css/justbetter-starter-kit.css',
+        ],
+        'publicDirectory' => 'resources/dist',
+    ];
+
     public function bootAddon(): void
     {
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'justbetter-starter-kit');
+
         $this->app->booted(function () {
             $router = app(Router::class);
             $router->pushMiddlewareToGroup('web', RedirectAbsoluteDomains::class);
