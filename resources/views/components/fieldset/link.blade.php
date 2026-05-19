@@ -8,9 +8,11 @@ Examples:
 </x-fieldset.link>
 ```
 
-Sometimes it can happen that you want to have a parent item to be a link but still use the button component inside the parent.
-But an anchor tag within another anchor tag won't work and will break the HTML. That is why we have the prop link to add this to the
-child element that shouldn't be an anchor tag.
+A common pattern is making an entire card or list item clickable by wrapping it in an <x-fieldset.link> tag
+but then also including a <x-fieldset.button> component inside it. This creates a nested anchor (<a> inside <a>),
+which is invalid HTML and causes unpredictable browser behavior.
+Use the link prop on <x-fieldset.button> for these cases.
+Instead of rendering an <a> tag, the button renders as a <span> element — keeping the markup valid while preserving the expected behavior.
 ```
     <x-fieldset.link :link="$button?->link">
         <x-fieldset.media :media="$media?->value()" />

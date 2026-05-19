@@ -1,19 +1,6 @@
 {{--
 Everything that has to do with images or videos.
 
-Options (in Statamic):
-- Object
-    - cover
-    - contain
-- Video
-    - Autplay
-    - Muted
-    - Loop
-    - Controls
-- Image
-    - Loading Lazy
-    - Loading Eager
-
 Examples:
 ```
 <x-fieldset.media :media="$media?->value()" />
