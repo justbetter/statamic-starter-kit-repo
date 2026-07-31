@@ -8,17 +8,26 @@ export_paths:
   - config/justbetter
   - config/filesystems.php
   - config/auth.php
+  - config/cloudflare-purge.php
+  - config/healthchecks.php
+  - config/sentry.php
+  - config/statamic-authentik.php
+  - config/statamic-veto.php
   - config/statamic/users.php
   - config/statamic/assets.php
   - config/statamic/editions.php
   - config/statamic/eloquent-driver.php
   - config/statamic/system.php
   - config/statamic/forms.php
+  - config/statamic/static_caching.php
+  - config/statamic/search.php
+  - config/statamic/seo-pro.php
   - resources/blueprints
   - resources/fieldsets
   - resources/css
   - resources/js
   - resources/svg
+  - resources/users/roles.yaml
   - resources/views/page.blade.php
   - resources/views/page_builder.blade.php
   - resources/views/layouts/app.blade.php
@@ -28,12 +37,19 @@ export_paths:
   - resources/views/layouts/seo
   - resources/views/vendor/mail
   - resources/sites.yaml
+  - public/icons
   - database/migrations
   - package.json
   - vite.config.js
   - lang/nl.json
 dependencies:
-  - statamic/eloquent-driver
+  - justbetter/statamic-cloudflare-purge
+  - justbetter/statamic-detour
   - justbetter/statamic-glide-directive
-  - rapidez/blade-directives
+  - justbetter/statamic-structured-data
+  - justbetter/statamic-veto
   - rapidez/blade-components
+  - rapidez/blade-directives
+  - sentry/sentry-laravel
+  - statamic/eloquent-driver
+  - statamic/seo-pro

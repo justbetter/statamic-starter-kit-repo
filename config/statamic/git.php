@@ -64,6 +64,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Unique Lock Expiry
+    |--------------------------------------------------------------------------
+    |
+    | When commits are queued, a unique lock prevents multiple jobs from
+    | being dispatched for the same set of changes. This is the expiry
+    | in seconds. It should exceed your queue worker's configured timeout.
+    |
+    */
+
+    'unique_lock_expiry' => env('STATAMIC_GIT_UNIQUE_LOCK_EXPIRY', 120),
+
+    /*
+    |--------------------------------------------------------------------------
     | Git User
     |--------------------------------------------------------------------------
     |

@@ -27,6 +27,8 @@ return [
         'users' => false,
     ],
 
+    'auth_token' => env('STATAMIC_GRAPHQL_AUTH_TOKEN'),
+
     /*
     |--------------------------------------------------------------------------
     | Queries
@@ -39,6 +41,21 @@ return [
     */
 
     'queries' => [
+        //
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Mutations
+    |--------------------------------------------------------------------------
+    |
+    | Here you may list mutations to be added to the Statamic schema.
+    |
+    | https://statamic.dev/graphql#custom-mutations
+    |
+    */
+
+    'mutations' => [
         //
     ],
 
@@ -73,5 +90,17 @@ return [
     'cache' => [
         'expiry' => 60,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Introspection
+    |--------------------------------------------------------------------------
+    |
+    | Control whether GraphQL introspection is enabled. Use "auto" to enable
+    | in local environments and disable in production.
+    |
+    */
+
+    'introspection' => env('STATAMIC_GRAPHQL_INTROSPECTION_ENABLED', 'auto'),
 
 ];

@@ -112,6 +112,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Default Timezone
+    |--------------------------------------------------------------------------
+    |
+    | The default timezone used in the control panel. Set to "auto" to use
+    | the user's browser timezone, or a specific timezone string.
+    |
+    */
+
+    'default_timezone' => env('STATAMIC_CP_DEFAULT_TIMEZONE', 'auto'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Theme
     |--------------------------------------------------------------------------
     |

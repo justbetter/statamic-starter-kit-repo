@@ -45,4 +45,16 @@ return [
 
     'force_reload_js_modules' => true,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Hot Reload Contents
+    |--------------------------------------------------------------------------
+    |
+    | When enabled, Live Preview will hot reload content changes without
+    | a full page refresh where possible.
+    |
+    */
+
+    'hot_reload_contents' => true,
+
 ];

@@ -74,4 +74,20 @@ return [
         'timeout' => 30,
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Warming
+    |--------------------------------------------------------------------------
+    |
+    | These options control performance optimizations during Stache warming.
+    |
+    */
+
+    'warming' => [
+        'parallel_processing' => false,
+        'max_processes' => 0,
+        'min_stores_for_parallel' => 3,
+        'concurrency_driver' => 'process',
+    ],
+
 ];
