@@ -4,6 +4,7 @@ namespace Tests\Feature\Controllers;
 
 use App\Models\User;
 use PHPUnit\Framework\Attributes\Test;
+use Statamic\Entries\Entry as StatamicEntry;
 use Statamic\Facades\Entry;
 use Tests\TestCase;
 
@@ -32,7 +33,7 @@ class GlobalComponentControllerTest extends TestCase
 
         $entry = Entry::find($response->json('id'));
 
-        $this->assertNotNull($entry);
+        $this->assertInstanceOf(StatamicEntry::class, $entry);
         $this->assertSame('global_components', $entry->collectionHandle());
         $this->assertSame('Reusable Banner', $entry->value('title'));
 
@@ -88,7 +89,12 @@ class GlobalComponentControllerTest extends TestCase
         $first = $this->postJson(cp_route('global-components.convert'), $payload)->assertOk();
         $second = $this->postJson(cp_route('global-components.convert'), $payload)->assertOk();
 
-        $this->assertSame('reusable-banner', Entry::find($first->json('id'))->slug());
-        $this->assertSame('reusable-banner-2', Entry::find($second->json('id'))->slug());
+        $firstEntry = Entry::find($first->json('id'));
+        $secondEntry = Entry::find($second->json('id'));
+
+        $this->assertInstanceOf(StatamicEntry::class, $firstEntry);
+        $this->assertInstanceOf(StatamicEntry::class, $secondEntry);
+        $this->assertSame('reusable-banner', $firstEntry->slug());
+        $this->assertSame('reusable-banner-2', $secondEntry->slug());
     }
 }
