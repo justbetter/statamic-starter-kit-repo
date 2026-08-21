@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Statamic;
 
@@ -13,5 +14,9 @@ class AppServiceProvider extends ServiceProvider
             'resources/js/cp.js',
             'resources/css/cp.css',
         ]);
+
+        Statamic::pushCpRoutes(function () {
+            require base_path('routes/cp.php');
+        });
     }
 }
