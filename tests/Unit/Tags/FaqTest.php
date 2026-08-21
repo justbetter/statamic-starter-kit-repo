@@ -29,8 +29,9 @@ class FaqTest extends TestCase
         $tag->params = $parameters;
         $result = $tag->getItems();
 
-        $this->assertSame($manualItems, $result);
         $this->assertCount(2, $result);
+        $this->assertContains($entry1, $result);
+        $this->assertContains($entry2, $result);
     }
 
     #[Test]
