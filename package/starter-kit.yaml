@@ -2,6 +2,8 @@ updatable: true
 export_paths:
   - .env.example
   - .gitignore
+  - app/Http/Controllers/Cp/GlobalComponentController.php
+  - app/Http/Requests/Cp/StoreGlobalComponentRequest.php
   - app/Models/User.php
   - app/Tags/Faq.php
   - content
@@ -37,7 +39,9 @@ export_paths:
   - resources/views/layouts/seo
   - resources/views/vendor/mail
   - resources/sites.yaml
+  - routes/cp.php
   - public/icons
+  - tests/Feature/Controllers/GlobalComponentControllerTest.php
   - database/migrations
   - package.json
   - vite.config.js

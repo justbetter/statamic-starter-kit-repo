@@ -31,7 +31,9 @@ jobs:
 
             - name: Install dependencies
               run: |
-                  composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-                  composer update --${{ matrix.stability }} --prefer-dist --no-interaction
+                  php -r '$composer = json_decode(file_get_contents("composer.json"), true); unset($composer["require"]["just-better/laravel-healthchecks"], $composer["require"]["just-better/statamic-authentik"]); $composer["repositories"] = array_values(array_filter($composer["repositories"] ?? [], fn ($repository) => ($repository["url"] ?? null) !== "https://repo.justbetter.nl")); file_put_contents("composer.json", json_encode($composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES).PHP_EOL);'
+                  rm -f "database/migrations/2026_07_31_131453_create_health_tables.php"
+                  composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update --no-scripts
+                  composer update --${{ matrix.stability }} --prefer-dist --no-interaction --no-scripts
             - name: Execute tests
               run: composer test

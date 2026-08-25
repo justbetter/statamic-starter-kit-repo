@@ -29,8 +29,9 @@ class FaqTest extends TestCase
         $tag->params = $parameters;
         $result = $tag->getItems();
 
-        $this->assertSame($manualItems, $result);
         $this->assertCount(2, $result);
+        $this->assertContains($entry1, $result);
+        $this->assertContains($entry2, $result);
     }
 
     #[Test]
@@ -40,6 +41,59 @@ class FaqTest extends TestCase
             $mock->shouldReceive('get')->with('type')->andReturn(null);
             $mock->shouldReceive('get')->with('categories')->andReturn(collect());
             $mock->shouldReceive('get')->with('items')->andReturn(collect());
+        });
+
+        $tag = new Faq;
+        $tag->params = $parameters;
+
+        $result = $tag->getItems();
+
+        $this->assertInstanceOf(Collection::class, $result);
+        $this->assertTrue($result->isEmpty());
+    }
+
+    #[Test]
+    public function it_returns_empty_collection_when_manual_items_are_not_a_collection(): void
+    {
+        $parameters = $this->mock(Parameters::class, function ($mock) {
+            $mock->shouldReceive('get')->with('type')->andReturn('manual');
+            $mock->shouldReceive('get')->with('items')->andReturn(null);
+        });
+
+        $tag = new Faq;
+        $tag->params = $parameters;
+
+        $result = $tag->getItems();
+
+        $this->assertInstanceOf(Collection::class, $result);
+        $this->assertTrue($result->isEmpty());
+    }
+
+    #[Test]
+    public function it_filters_non_entry_manual_items(): void
+    {
+        $entry = $this->mock(Entry::class);
+
+        $parameters = $this->mock(Parameters::class, function ($mock) use ($entry) {
+            $mock->shouldReceive('get')->with('type')->andReturn('manual');
+            $mock->shouldReceive('get')->with('items')->andReturn(collect([$entry, 'not-an-entry']));
+        });
+
+        $tag = new Faq;
+        $tag->params = $parameters;
+
+        $result = $tag->getItems();
+
+        $this->assertCount(1, $result);
+        $this->assertContains($entry, $result);
+    }
+
+    #[Test]
+    public function it_returns_empty_collection_when_categories_are_not_a_collection(): void
+    {
+        $parameters = $this->mock(Parameters::class, function ($mock) {
+            $mock->shouldReceive('get')->with('type')->andReturn(null);
+            $mock->shouldReceive('get')->with('categories')->andReturn(null);
         });
 
         $tag = new Faq;
@@ -84,5 +138,28 @@ class FaqTest extends TestCase
         $this->assertContains($entry1, $result);
         $this->assertContains($entry2, $result);
         $this->assertContains($entry3, $result);
+    }
+
+    #[Test]
+    public function it_filters_non_terms_and_non_entries_from_categories(): void
+    {
+        $entry = $this->mock(Entry::class);
+
+        $category = $this->mock(Term::class, function ($mock) use ($entry) {
+            $mock->shouldReceive('entries')->andReturn(collect([$entry, 'not-an-entry']));
+        });
+
+        $parameters = $this->mock(Parameters::class, function ($mock) use ($category) {
+            $mock->shouldReceive('get')->with('type')->andReturn(null);
+            $mock->shouldReceive('get')->with('categories')->andReturn(collect([$category, 'not-a-term']));
+        });
+
+        $tag = new Faq;
+        $tag->params = $parameters;
+
+        $result = $tag->getItems();
+
+        $this->assertCount(1, $result);
+        $this->assertContains($entry, $result);
     }
 }
