@@ -23,7 +23,6 @@ fields:
             display: Heading
             localizable: false
             width: 66
-            instructions: 'Maak woorden italic om ze in de accentkleur te tonen'
             instructions_position: below
         -
           handle: heading_type
