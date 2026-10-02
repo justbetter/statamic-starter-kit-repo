@@ -33,7 +33,7 @@ fields:
                 field:
                   options:
                     - key: page-title
-                      value: 'Pagina titel'
+                      value: 'Page title'
                     - key: component-title
                       value: 'Component titel'
                   default: component
