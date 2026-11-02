@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99706c5e11b8398dbd5d586789f9d69b",
+    "content-hash": "88dec74c4a623b999b853de5480b3f19",
     "packages": [
         {
             "name": "ajthinking/archetype",
@@ -273,6 +273,125 @@
                 }
             ],
             "time": "2026-06-30T09:44:12+00:00"
+        },
+        {
+            "name": "bobwez98/mail-log-laravel",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BobWez98/mail-log-laravel.git",
+                "reference": "32515658aabf9978bf016cc1906682e2b661f03b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BobWez98/mail-log-laravel/zipball/32515658aabf9978bf016cc1906682e2b661f03b",
+                "reference": "32515658aabf9978bf016cc1906682e2b661f03b",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^13.0",
+                "php": "^8.4"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.9",
+                "laravel/pint": "^1.29",
+                "orchestra/testbench": "^11.0",
+                "phpstan/phpstan-mockery": "^2.0",
+                "phpunit/phpunit": "^13.0",
+                "rector/rector": "^2.3"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BobWez98\\MailLog\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BobWez98\\MailLog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bob Wezelman",
+                    "email": "info@bobwezelman.nl"
+                }
+            ],
+            "description": "A module to log mails in laravel.",
+            "support": {
+                "issues": "https://github.com/BobWez98/mail-log-laravel/issues",
+                "source": "https://github.com/BobWez98/mail-log-laravel/tree/1.1.0"
+            },
+            "time": "2026-10-06T20:46:10+00:00"
+        },
+        {
+            "name": "bobwez98/mail-log-statamic",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BobWez98/mail-log-statamic.git",
+                "reference": "fe6cb65a19eebd40eb5e16bc313d8e1313e027c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BobWez98/mail-log-statamic/zipball/fe6cb65a19eebd40eb5e16bc313d8e1313e027c1",
+                "reference": "fe6cb65a19eebd40eb5e16bc313d8e1313e027c1",
+                "shasum": ""
+            },
+            "require": {
+                "bobwez98/mail-log-laravel": "^1.1",
+                "laravel/framework": "^13.0",
+                "php": "^8.4",
+                "statamic/cms": "^6.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^3.9",
+                "laravel/pint": "^1.29",
+                "orchestra/testbench": "^11.0",
+                "phpstan/phpstan-mockery": "^2.0",
+                "phpunit/phpunit": "^13.0",
+                "rector/rector": "^2.3"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BobWez98\\MailLogStatamic\\ServiceProvider"
+                    ]
+                },
+                "statamic": {
+                    "name": "Mail Log Statamic",
+                    "slug": "mail-log-statamic",
+                    "description": "A Statamic Control Panel interface for mail logs."
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BobWez98\\MailLogStatamic\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bob Wezelman",
+                    "email": "info@bobwezelman.nl"
+                }
+            ],
+            "description": "A Statamic Control Panel interface for mail logs.",
+            "support": {
+                "issues": "https://github.com/BobWez98/mail-log-statamic/issues",
+                "source": "https://github.com/BobWez98/mail-log-statamic/tree/1.1.1"
+            },
+            "time": "2026-10-08T19:48:02+00:00"
         },
         {
             "name": "brick/math",
@@ -2469,7 +2588,7 @@
         },
         {
             "name": "justbetter/statamic-starter-kit",
-            "version": "dev-master",
+            "version": "dev-feature/mail-logger",
             "dist": {
                 "type": "path",
                 "url": "package",

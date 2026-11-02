@@ -53,3 +53,4 @@ dependencies:
   - sentry/sentry-laravel
   - statamic/eloquent-driver
   - statamic/seo-pro
+  - bobwez98/mail-log-statamic
