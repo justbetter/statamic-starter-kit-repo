@@ -15,7 +15,6 @@
         <meta name="theme-color" content="#0E1F30">
 
         @vite('resources/css/site.css')
-        <noscript><style>[data-requires-js] { display: none !important; }</style></noscript>
 
         @include('statamic-glide-directive::partials.head')
         @includeIf('layouts.structured-data.head')
