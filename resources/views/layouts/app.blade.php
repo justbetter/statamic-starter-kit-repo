@@ -15,15 +15,16 @@
         <meta name="theme-color" content="#0E1F30">
 
         @vite('resources/css/site.css')
+        <noscript><style>[data-requires-js] { display: none !important; }</style></noscript>
 
         @include('statamic-glide-directive::partials.head')
         @includeIf('layouts.structured-data.head')
     </head>
     <body class="flex flex-col antialiased font-sans text">
         @includeIf('layouts.seo.body')
-        <x-layouts.header :logo="$brand->logo ?? null" />
+        @include('layouts.header', ['logo' => $brand->logo ?? null])
         @yield('content')
-        <x-layouts.footer :logo="$brand->logo ?? null" />
+        @include('layouts.footer', ['logo' => $brand->logo ?? null])
         @vite('resources/js/site.js')
 
         @stack('foot')
