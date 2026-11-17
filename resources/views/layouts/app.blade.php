@@ -15,6 +15,7 @@
         <meta name="theme-color" content="#0E1F30">
 
         @vite('resources/css/site.css')
+
         @include('statamic-glide-directive::partials.head')
         @includeIf('layouts.structured-data.head')
     </head>
