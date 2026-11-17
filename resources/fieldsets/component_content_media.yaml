@@ -1,11 +1,11 @@
-title: 'Component - Text + Image'
+title: 'Component - Content + Media'
 fields:
   -
     import: media
   -
     import: content
   -
-    handle: toggle
+    handle: mirror
     field:
       type: toggle
       display: Mirror

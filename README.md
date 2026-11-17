@@ -13,7 +13,7 @@ This is the repo project that is used for creating the JustBetter Statamic Start
 - [Title](https://github.com/justbetter/statamic-starter-kit-repo/blob/master/resources/views/components/fieldset/title.blade.php)
 
 The idea with these fieldsets is to have a good starting point with basic configuration that you can use inside components for your page builder for example you can use it
-inside the [text_image](https://github.com/justbetter/statamic-starter-kit-repo/blob/master/resources/views/page_builder/text_image.blade.php) component.
+inside the [content_media](https://github.com/justbetter/statamic-starter-kit-repo/blob/master/resources/views/page_builder/content_media.blade.php) component.
 
 ## Usage
 

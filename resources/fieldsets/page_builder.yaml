@@ -21,11 +21,11 @@ fields:
               fields:
                 -
                   import: component_content
-            text_image:
-              display: 'Text + image'
+            content_media:
+              display: 'Content + media'
               fields:
                 -
-                  import: component_text_image
+                  import: component_content_media
             faq:
               display: FAQ
               fields:

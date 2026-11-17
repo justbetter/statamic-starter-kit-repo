@@ -13,8 +13,6 @@ fields:
         -
           handle: heading
           field:
-            buttons:
-              - italic
             save_html: true
             remove_empty_nodes: false
             inline: true
