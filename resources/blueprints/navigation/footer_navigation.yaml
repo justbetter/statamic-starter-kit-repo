@@ -1,0 +1,13 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: blank
+            field:
+              type: toggle
+              display: 'Open in new tab'
+              default: false
+              localizable: false
