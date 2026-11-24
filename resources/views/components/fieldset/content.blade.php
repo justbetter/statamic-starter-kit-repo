@@ -18,11 +18,12 @@ But if you really need it you can do it like this.
 </x-fieldset.content>
 ```
 
-If you want to add an image you can do it like this:
+If you want to add media, add a bard set (e.g. `media`) that imports the `media` fieldset
+in `resources/fieldsets/content.yaml` and render it like this:
 ```
     ...
-    @elseif($data['type'] === 'image')
-        <x-fieldset.media :media="$media?->value()" :attributes="$media->attributes->twMerge('fieldset-content data-media')"/>
+    @elseif($data['type'] === 'media')
+        <x-fieldset.media :media="$data->media" :attributes="$media->attributes->twMerge('fieldset-content data-media')"/>
     @endif
 ```
 And don't forget to add `media` to your @slots

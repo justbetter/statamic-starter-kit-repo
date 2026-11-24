@@ -19,20 +19,30 @@ Examples:
         $classes = $attributes->twMerge(
             $objectCover ? '**:object-cover **:size-full' : 'w-auto! h-auto!'
         );
+        $loading = $media->media_options['loading']?->value() ?? 'lazy';
+        $lazy = $loading === 'lazy';
     @endphp
 
     <div {{ $classes }}>
         @if ($media['media']->isVideo())
+            @php
+                $videoOptions = collect($media->media_options['video'] ?? [])
+                    ->flatMap(fn ($option) => explode(' ', $option['value']))
+                    ->filter();
+                $autoplay = $videoOptions->contains('autoplay');
+            @endphp
             <video
-                @foreach($media->media_options['video'] as $option)
-                    {{ $option['value'] }}
+                @foreach($videoOptions->reject(fn ($option) => $option === 'autoplay') as $option)
+                    {{ $option }}
                 @endforeach
-                loading="{{ $media->media_options['loading']?->value() ?? 'lazy' }}"
+                preload="{{ $lazy ? 'none' : ($autoplay ? 'auto' : 'metadata') }}"
+                x-data="video(@js($autoplay))"
+                x-load="{{ $lazy ? 'visible' : 'eager' }}"
             >
-                <source src="{{ $media['media'] }}" type="video/mp4">
+                <source {{ $lazy ? 'data-src' : 'src' }}="{{ $media['media'] }}" type="video/mp4">
             </video>
         @else
-            @responsive($media['media'], ['loading' => $media->media_options['loading']?->value() ?? 'lazy'])
+            @responsive($media['media'], ['loading' => $loading])
         @endif
     </div>
 @endif

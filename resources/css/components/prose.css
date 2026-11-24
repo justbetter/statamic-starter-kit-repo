@@ -7,7 +7,7 @@
         prose-headings:first:text-h2 prose-h1:first:text-h1 prose-h2:text-h2 prose-h3:text-h3 prose-h4:text-h4 prose-headings:font-semibold prose-headings:font-heading prose-headings:prose-em:not-italic prose-headings:prose-em:text-secondary
         prose-a:underline
         max-w-4xl empty:hidden;
-} 
+}
 
 @utility check-icon {
     @apply size-4 shrink-0 mask-contain mask-no-repeat bg-primary translate-y-0.5 inline-block mr-3;
