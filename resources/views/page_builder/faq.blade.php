@@ -3,7 +3,7 @@
 @endphp
 
 @if($faqItems?->isNotEmpty() ?? false)
-    <div class="component faq">
+    <div class="component faq" @if ($anchorId ?? false) id="{{ $anchorId }}" @endif>
         <div class="container">
             <x-fieldset.title :title="$title?->value()" class="mb-5" />
             

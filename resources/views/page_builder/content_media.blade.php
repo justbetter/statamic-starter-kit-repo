@@ -1,7 +1,7 @@
 <div @class([
         'component content-media',
         'has-background' => $background->value(),
-    ])
+    ]) @if ($anchorId ?? false) id="{{ $anchorId }}" @endif
 >
     <div class="container">
         <div class="grid gap-x-14 lg:grid-cols-2 lg:items-center lg:justify-center max-lg:gap-y-10">

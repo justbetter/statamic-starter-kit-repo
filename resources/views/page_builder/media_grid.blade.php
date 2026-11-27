@@ -1,5 +1,5 @@
 @if ($media_items?->value() ?? false)
-    <div class="component media-grid">
+    <div class="component media-grid" @if ($anchorId ?? false) id="{{ $anchorId }}" @endif>
         <div class="container">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 @foreach ($media_items as $media_item)

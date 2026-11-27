@@ -9,7 +9,7 @@
                 :buttonText="$button_text?->value() ?? __('Send')"
                 :submissionText="$submission_text?->value() ?? ''"
                 :formRedirectUrl="$redirect_url?->value()->url() ?? ''"
-                :id="$anchor_id?->value() ?? $form->handle"
+                :id="($anchorId ?? null) ?: $form->handle"
             />
         </div>
     </div>

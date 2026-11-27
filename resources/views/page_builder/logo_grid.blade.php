@@ -1,5 +1,5 @@
 @if ($logos?->value() ?? false)
-    <div class="component logo-grid">
+    <div class="component logo-grid" @if ($anchorId ?? false) id="{{ $anchorId }}" @endif>
         <div class="container">
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 @foreach ($logos as $logo)

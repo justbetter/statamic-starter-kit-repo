@@ -1,4 +1,4 @@
-<div class="component banner">
+<div class="component banner" @if ($anchorId ?? false) id="{{ $anchorId }}" @endif>
     <div @class([
         'container' => $display['value'] === 'container',
         'xl:container' => $display['value'] === 'desktop_container',

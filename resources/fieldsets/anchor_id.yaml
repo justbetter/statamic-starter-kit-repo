@@ -1,0 +1,10 @@
+title: 'Anchor ID'
+fields:
+  -
+    handle: anchor_id
+    field:
+      type: text
+      display: 'Anchor ID'
+      instructions: 'Use this to link to this component, e.g. "contact" for a link to "#contact".'
+      instructions_position: below
+      localizable: true

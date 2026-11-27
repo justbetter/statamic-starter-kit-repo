@@ -3,12 +3,6 @@ fields:
   -
     import: title
   -
-    handle: anchor_id
-    field:
-      type: text
-      display: 'Anchor ID'
-      localizable: true
-  -
     handle: form
     field:
       max_items: 1
@@ -45,3 +39,22 @@ fields:
       display: 'Form - Redirect URL'
       instructions: 'Leave empty to only show text after submitting the form.'
       localizable: true
+  -
+    handle: options
+    field:
+      mode: toggle
+      type: revealer
+      display: 'Component options'
+      localizable: false
+  -
+    handle: component_options
+    field:
+      type: group
+      display: 'Component options'
+      always_save: true
+      localizable: false
+      if:
+        options: 'equals true'
+      fields:
+        -
+          import: anchor_id
