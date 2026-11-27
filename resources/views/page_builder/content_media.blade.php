@@ -1,7 +1,9 @@
-<div @class([
-        'component content-media',
+<x-component
+    :options="($component_options ?? null)?->value()"
+    @class([
+        'content-media',
         'has-background' => $background->value(),
-    ]) @if ($anchorId ?? false) id="{{ $anchorId }}" @endif
+    ])
 >
     <div class="container">
         <div class="grid gap-x-14 lg:grid-cols-2 lg:items-center lg:justify-center max-lg:gap-y-10">
@@ -9,4 +11,4 @@
             <x-fieldset.media :media="$media?->value()" class="h-140" />
         </div>
     </div>
-</div>
+</x-component>

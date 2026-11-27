@@ -1,7 +1,7 @@
 @if($content->value() ?? false)
-    <div class="component content" @if ($anchorId ?? false) id="{{ $anchorId }}" @endif>
+    <x-component :options="($component_options ?? null)?->value()" class="content">
         <div class="container">
             <x-fieldset.content :content="$content?->value()" />
         </div>
-    </div>
+    </x-component>
 @endif

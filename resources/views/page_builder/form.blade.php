@@ -1,5 +1,5 @@
 @if($form->handle ?? false)
-    <div class="container component form">
+    <x-component :options="($component_options ?? null)?->value()" class="container form">
         <div class="flex flex-col gap-y-4">
             <x-fieldset.title :title="$title?->value()" />
 
@@ -9,8 +9,8 @@
                 :buttonText="$button_text?->value() ?? __('Send')"
                 :submissionText="$submission_text?->value() ?? ''"
                 :formRedirectUrl="$redirect_url?->value()->url() ?? ''"
-                :id="($anchorId ?? null) ?: $form->handle"
+                :id="$form->handle"
             />
         </div>
-    </div>
+    </x-component>
 @endif

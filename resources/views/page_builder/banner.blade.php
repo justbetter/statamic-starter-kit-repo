@@ -1,4 +1,4 @@
-<div class="component banner" @if ($anchorId ?? false) id="{{ $anchorId }}" @endif>
+<x-component :options="($component_options ?? null)?->value()" class="banner">
     <div @class([
         'container' => $display['value'] === 'container',
         'xl:container' => $display['value'] === 'desktop_container',
@@ -13,4 +13,4 @@
             />
         </x-fieldset.link>
     </div>
-</div>
+</x-component>
