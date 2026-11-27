@@ -7,6 +7,8 @@
 }
 
 .component {
+    @apply scroll-mt-6;
+
     &.has-background {
         @apply py-10 lg:py-20 bg;
     }

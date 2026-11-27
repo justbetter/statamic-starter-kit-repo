@@ -3,7 +3,7 @@
 @endphp
 
 @if($faqItems?->isNotEmpty() ?? false)
-    <div class="component faq">
+    <x-component :options="($component_options ?? null)?->value()" class="faq">
         <div class="container">
             <x-fieldset.title :title="$title?->value()" class="mb-5" />
             
@@ -18,5 +18,5 @@
                 </x-rapidez::accordion>
             @endforeach
         </div>
-    </div>
+    </x-component>
 @endif

@@ -1,5 +1,5 @@
 @if ($media_items?->value() ?? false)
-    <div class="component media-grid">
+    <x-component :options="($component_options ?? null)?->value()" class="media-grid">
         <div class="container">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 @foreach ($media_items as $media_item)
@@ -7,5 +7,5 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </x-component>
 @endif

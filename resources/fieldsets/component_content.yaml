@@ -2,3 +2,22 @@ title: 'Component - Content'
 fields:
   -
     import: content
+  -
+    handle: options
+    field:
+      mode: toggle
+      type: revealer
+      display: 'Component options'
+      localizable: false
+  -
+    handle: component_options
+    field:
+      type: group
+      display: 'Component options'
+      always_save: true
+      localizable: false
+      if:
+        options: 'equals true'
+      fields:
+        -
+          import: anchor_id

@@ -1,5 +1,7 @@
-<div @class([
-        'component content-media',
+<x-component
+    :options="($component_options ?? null)?->value()"
+    @class([
+        'content-media',
         'has-background' => $background->value(),
     ])
 >
@@ -9,4 +11,4 @@
             <x-fieldset.media :media="$media?->value()" class="h-140" />
         </div>
     </div>
-</div>
+</x-component>
